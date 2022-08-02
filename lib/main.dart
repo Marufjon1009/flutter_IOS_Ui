@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_home_work/pages/first.dart';
 import 'package:flutter_home_work/pages/second.dart';
+import 'package:flutter_home_work/pages/thisrd.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +19,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: FirstPage.path,
+      initialRoute: ThirdPage.path,
       routes: {
         FirstPage.path: (context) => const FirstPage(),
-        SecondPage.path: (context) => const SecondPage()
+        SecondPage.path: (context) => const SecondPage(),
+        ThirdPage.path: (context) => const ThirdPage()
       },
     );
   }
