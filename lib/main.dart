@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_home_work/pages/first.dart';
 import 'package:flutter_home_work/pages/second.dart';
 import 'package:flutter_home_work/pages/thisrd.dart';
@@ -10,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // This widget is the root of your application.s
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       routes: {
         FirstPage.path: (context) => const FirstPage(),
         SecondPage.path: (context) => const SecondPage(),
-        ThirdPage.path: (context) => const ThirdPage()
+        ThirdPage.path: (context) => const ThirdPage(),
       },
     );
   }

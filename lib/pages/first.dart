@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -90,10 +91,23 @@ class _FirstPageState extends State<FirstPage> {
           ),
         )
       ]),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 72, 71, 71),
-        onPressed: () => Navigator.pushNamed(context, SecondPage.path),
-        child: const Icon(Icons.forward),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: .0,
+        backgroundColor: const Color.fromARGB(255, 26, 25, 25),
+        unselectedIconTheme: const IconThemeData(color: Colors.white),
+        onTap: (value) {},
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.white,
+        items: const [
+          BottomNavigationBarItem(label: "", icon: Icon(Icons.home_outlined)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(Icons.shopping_bag_outlined)),
+          BottomNavigationBarItem(label: "", icon: Icon(Icons.wallet_rounded)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(CupertinoIcons.chat_bubble_text)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(Icons.watch_later_outlined)),
+        ],
       ),
     );
   }

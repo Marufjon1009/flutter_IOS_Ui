@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ThirdPage extends StatefulWidget {
@@ -11,6 +10,26 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  late bool OneContainer;
+  late bool TwoContainer;
+
+  @override
+  void didChangeDependencies() {
+    OneContainer = false;
+    TwoContainer = false;
+    super.didChangeDependencies();
+  }
+
+  void TwoContainer1() {
+    TwoContainer = !TwoContainer;
+    setState(() {});
+  }
+
+  void OneContainer1() {
+    OneContainer = !OneContainer;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -516,16 +535,21 @@ class _ThirdPageState extends State<ThirdPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 22, top: 35),
-                      child: Icon(
-                        Icons.expand_more,
-                        color: Colors.white,
+                      padding: const EdgeInsets.only(left: 12, top: 10),
+                      child: IconButton(
+                        onPressed: OneContainer1,
+                        icon: Icon(
+                          OneContainer
+                              ? Icons.expand_more
+                              : Icons.chevron_right,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, top: 35),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 10, top: 10),
                       child: Text(
                         'CURRENT LOANS ',
                         style: TextStyle(
@@ -534,8 +558,8 @@ class _ThirdPageState extends State<ThirdPage> {
                             color: Colors.white),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 200, top: 35),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 180, top: 10),
                       child: CircleAvatar(
                           backgroundColor: Color.fromARGB(255, 105, 104, 104),
                           radius: 13,
@@ -546,149 +570,173 @@ class _ThirdPageState extends State<ThirdPage> {
                     )
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 13, left: 20),
-                  child: Container(
-                    width: 335,
-                    height: 76,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 44, 43, 43),
-                        borderRadius: BorderRadius.circular(26)),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 22, bottom: 22, left: 20, right: 10),
-                          child: Container(
-                              width: 32,
-                              height: 32,
+                OneContainer
+                    ? Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 13, left: 20),
+                            child: Container(
+                              width: 335,
+                              height: 76,
                               decoration: BoxDecoration(
-                                  color:
-                                      const Color.fromARGB(255, 160, 217, 226),
-                                  borderRadius: BorderRadius.circular(12)),
-                              child: const Icon(Icons.card_travel)),
-                        ),
-                        Column(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(top: 20),
-                              child: Text(
-                                'Account № 3874825',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white),
+                                  color: const Color.fromARGB(255, 44, 43, 43),
+                                  borderRadius: BorderRadius.circular(26)),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 22,
+                                        bottom: 22,
+                                        left: 20,
+                                        right: 10),
+                                    child: Container(
+                                        width: 32,
+                                        height: 32,
+                                        decoration: BoxDecoration(
+                                            color: const Color.fromARGB(
+                                                255, 160, 217, 226),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        child: const Icon(Icons.card_travel)),
+                                  ),
+                                  Column(
+                                    children: const [
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 20),
+                                        child: Text(
+                                          'Account № 3874825',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(right: 33, top: 2),
+                                        child: Text(
+                                          'Expires 12/22/2023',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.grey),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Column(
+                                    children: const [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 64, top: 20),
+                                        child: Text(
+                                          '\$ 78,92',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 63, top: 2),
+                                        child: Text(
+                                          'Rate 3.5%',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400,
+                                              color: Colors.grey),
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(right: 33, top: 2),
-                              child: Text(
-                                'Expires 12/22/2023',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              ),
-                            )
-                          ],
-                        ),
-                        Column(
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(left: 64, top: 20),
-                              child: Text(
-                                '\$ 78,92',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 63, top: 2),
-                              child: Text(
-                                'Rate 3.5%',
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.grey),
-                              ),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, left: 20),
-                  child: Container(
-                    width: 335,
-                    height: 76,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: [
-                          Color(0xFFb7d3d1),
-                          Color(0xFFc0d7d5),
-                          Color(0xFFd1dedd)
-                        ]),
-                        borderRadius: BorderRadius.circular(26)),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20, top: 22),
-                          child: Container(
-                            width: 32,
-                            height: 32,
-                            decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(12)),
-                            child: Image.asset('assets/images/foto.png'),
                           ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.only(left: 8, top: 22),
-                              child: Text(
-                                'Start investing now!',
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16, left: 20),
+                            child: Container(
+                              width: 335,
+                              height: 76,
+                              decoration: BoxDecoration(
+                                  gradient: const LinearGradient(colors: [
+                                    Color(0xFFb7d3d1),
+                                    Color(0xFFc0d7d5),
+                                    Color(0xFFd1dedd)
+                                  ]),
+                                  borderRadius: BorderRadius.circular(26)),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 20, top: 22),
+                                    child: Container(
+                                      width: 32,
+                                      height: 32,
+                                      decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(12)),
+                                      child:
+                                          Image.asset('assets/images/foto.png'),
+                                    ),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: const [
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 8, top: 22),
+                                        child: Text(
+                                          'Start investing now!',
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 8),
+                                        child: Text(
+                                          'Protected savings and investment plans',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 14, left: 30),
+                                    child: Icon(
+                                      Icons.close,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 8),
-                              child: Text(
-                                'Protected savings and investment plans',
-                                style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w400),
-                              ),
-                            )
-                          ],
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 14, left: 30),
-                          child: Icon(
-                            Icons.close,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                        ],
+                      )
+                    : Container(),
                 Row(
-                  children: const [
+                  children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 40, left: 22),
-                      child: Icon(
-                        Icons.expand_more,
-                        color: Colors.white,
+                      padding: const EdgeInsets.only(top: 40, left: 12),
+                      child: IconButton(
+                        onPressed: TwoContainer1,
+                        icon: Icon(
+                          TwoContainer
+                              ? Icons.expand_more
+                              : Icons.chevron_right,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 10, top: 38),
                       child: Text(
                         'CURRENCIES AND METALS',
@@ -700,321 +748,383 @@ class _ThirdPageState extends State<ThirdPage> {
                     ),
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 11),
-                  child: Container(
-                    width: 335,
-                    height: 116,
-                    decoration: BoxDecoration(
-                        color: Colors.black26,
-                        borderRadius: BorderRadius.circular(26)),
-                    child: Column(children: [
-                      Column(
-                        children: [
-                          Row(
-                            children: const [
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, top: 20),
-                                child: Text(
-                                  'Currencie',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 143, top: 20),
-                                child: Text(
-                                  'Buy',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 64, top: 20),
-                                child: Text(
-                                  'Sell',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                TwoContainer
+                    ? Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 12),
+                            padding: const EdgeInsets.only(left: 20, top: 11),
                             child: Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.blueGrey,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(left: 6, top: 3),
-                                  child: Text(
-                                    '\$',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 12, top: 14),
-                            child: Text(
-                              'USD',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 105, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 34, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 12),
-                            child: Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.blueGrey,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(left: 6, top: 3),
-                                  child: Text(
-                                    '€',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 12, top: 14),
-                            child: Text(
-                              'EUR',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 105, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 34, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ]),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 11),
-                  child: Container(
-                    width: 335,
-                    height: 116,
-                    decoration: BoxDecoration(
-                        color: Colors.black26,
-                        borderRadius: BorderRadius.circular(26)),
-                    child: Column(children: [
-                      Column(
-                        children: [
-                          Row(
-                            children: const [
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, top: 20),
-                                child: Text(
-                                  'Currencie',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
+                              width: 335,
+                              height: 116,
+                              decoration: BoxDecoration(
+                                  color: Colors.black26,
+                                  borderRadius: BorderRadius.circular(26)),
+                              child: Column(children: [
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 20, top: 20),
+                                          child: Text(
+                                            'Currencie',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 143, top: 20),
+                                          child: Text(
+                                            'Buy',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 64, top: 20),
+                                          child: Text(
+                                            'Sell',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 143, top: 20),
-                                child: Text(
-                                  'Buy',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
+                                Column(
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20, top: 12),
+                                          child: Container(
+                                              width: 20,
+                                              height: 20,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.blueGrey,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
+                                              child: const Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 6, top: 3),
+                                                child: Text(
+                                                  '\$',
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              )),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 12, top: 14),
+                                          child: Text(
+                                            'USD',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 105, top: 14),
+                                          child: Text(
+                                            '\$ 78,92',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 34, top: 14),
+                                          child: Text(
+                                            '\$ 78,92',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 20, top: 12),
+                                          child: Container(
+                                              width: 20,
+                                              height: 20,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.blueGrey,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8)),
+                                              child: const Padding(
+                                                padding: EdgeInsets.only(
+                                                    left: 6, top: 3),
+                                                child: Text(
+                                                  '€',
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              )),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 12, top: 14),
+                                          child: Text(
+                                            'EUR',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 105, top: 14),
+                                          child: Text(
+                                            '\$ 78,92',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                        const Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 34, top: 14),
+                                          child: Text(
+                                            '\$ 78,92',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.white),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 64, top: 20),
-                                child: Text(
-                                  'Sell',
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.grey),
+                              ]),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20, top: 11),
+                            child: Container(
+                              width: 335,
+                              height: 116,
+                              decoration: BoxDecoration(
+                                  color: Colors.black26,
+                                  borderRadius: BorderRadius.circular(26)),
+                              child: Column(children: [
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 20, top: 20),
+                                          child: Text(
+                                            'Currencie',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 143, top: 20),
+                                          child: Text(
+                                            'Buy',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 64, top: 20),
+                                          child: Text(
+                                            'Sell',
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.grey),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              )
-                            ],
-                          ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20, top: 12),
+                                      child: Container(
+                                          width: 20,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueGrey,
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 6, top: 3),
+                                            child: Text(
+                                              '\$',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 12, top: 14),
+                                      child: Text(
+                                        'USD',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 105, top: 14),
+                                      child: Text(
+                                        '\$ 78,92',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 34, top: 14),
+                                      child: Text(
+                                        '\$ 78,92',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 20, top: 12),
+                                      child: Container(
+                                          width: 20,
+                                          height: 20,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blueGrey,
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 6, top: 3),
+                                            child: Text(
+                                              '€',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 12, top: 14),
+                                      child: Text(
+                                        'EUR',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 105, top: 14),
+                                      child: Text(
+                                        '\$ 78,92',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 34, top: 14),
+                                      child: Text(
+                                        '\$ 78,92',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w400,
+                                            color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ]),
+                            ),
+                          )
                         ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 12),
-                            child: Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.blueGrey,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(left: 6, top: 3),
-                                  child: Text(
-                                    '\$',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 12, top: 14),
-                            child: Text(
-                              'USD',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 105, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 34, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 12),
-                            child: Container(
-                                width: 20,
-                                height: 20,
-                                decoration: BoxDecoration(
-                                    color: Colors.blueGrey,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: const Padding(
-                                  padding: EdgeInsets.only(left: 6, top: 3),
-                                  child: Text(
-                                    '€',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                )),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 12, top: 14),
-                            child: Text(
-                              'EUR',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 105, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 34, top: 14),
-                            child: Text(
-                              '\$ 78,92',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ]),
-                  ),
-                )
+                      )
+                    : Container(),
               ],
             ),
           ))
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: .0,
+        backgroundColor: const Color.fromARGB(255, 26, 25, 25),
+        unselectedIconTheme: const IconThemeData(color: Colors.white),
+        onTap: (value) {},
+        type: BottomNavigationBarType.fixed,
+        fixedColor: Colors.white,
+        items: const [
+          BottomNavigationBarItem(label: "", icon: Icon(Icons.home_outlined)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(Icons.shopping_bag_outlined)),
+          BottomNavigationBarItem(label: "", icon: Icon(Icons.wallet_rounded)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(CupertinoIcons.chat_bubble_text)),
+          BottomNavigationBarItem(
+              label: "", icon: Icon(Icons.watch_later_outlined)),
         ],
       ),
     );
